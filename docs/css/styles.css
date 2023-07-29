@@ -1,5 +1,5 @@
 .project-card:hover {
-  transform: scale(1.08);
+  transform: scale(1.05);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
@@ -58,4 +58,13 @@
 #profileInfo p {
   text-align: center;
   margin-top: 8px;
+}
+
+#nav_item {
+  transition: transform 0.3s;
+  transform-style: preserve-3d;
+}
+
+#nav_item:hover {
+  transform: scale(1.08) rotateX(12deg) rotateY(10deg);
 }

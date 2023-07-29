@@ -24,57 +24,61 @@
   <link href="css/styles.css" rel="stylesheet">
 
   <!-- Google tag (gtag.js) -->
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-0W8S6MSESJ');
-</script>
+    gtag('config', 'G-0W8S6MSESJ');
+  </script>
 </head>
 
 <body class="bg-gray-900 text-white">
   <header class="bg-gray-800 py-4">
     <nav class="container mx-auto px-4">
-        <ul class="flex space-x-4">
-          <li>
-            <a href="https://github.com/svxy" target="_blank" style="font-weight: 700; padding-right: 15px;">
-              <svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.303 3.438 9.8 8.207 11.385.6.113.793-.261.793-.582 0-.287-.013-1.31-.02-2.57-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.755-1.333-1.755-1.09-.744.083-.729.083-.729 1.205.085 1.838 1.236 1.838 1.236 1.07 1.838 2.807 1.307 3.49 1 .107-.775.417-1.305.758-1.605-2.652-.301-5.445-1.327-5.445-5.895 0-1.304.464-2.368 1.235-3.207-.124-.3-.536-1.518.117-3.16 0 0 1.005-.321 3.3 1.23A11.473 11.473 0 0112 6.504c1.044.004 2.088.14 3.062.415 2.292-1.55 3.295-1.23 3.295-1.23.657 1.642.243 2.86.12 3.16.77.84 1.232 1.903 1.232 3.207 0 4.578-2.798 5.59-5.457 5.884.429.366.81 1.096.81 2.212 0 1.598-.014 2.882-.014 3.276 0 .32.19.695.8.576C20.563 21.797 24 17.302 24 12c0-6.63-5.37-12-12-12"/>
-              </svg>
-              GitHub
-            </a>
-          </li>
-          <li>
-            <a href="https://kick.com/sneakydev" target="_blank" style="font-weight: 700; padding-right: 15px;">
-                <img class="w-4 h-4 inline-block mr-1" src="img/kick.png" alt="Kick">
-                Kick
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com/sneakyv2_" target="_blank" style="font-weight: 700; padding-right: 15px;">
-              <svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-              </svg>
-              Twitter
-            </a>
-          </li>
-        </ul>
-        <!--<button onclick="resetWelcomeCookie()">Reset Welcome Cookie</button>-->
-      </nav>       
+      <ul class="flex space-x-4">
+        <li id="nav_item">
+          <a href="https://github.com/svxy" target="_blank" style="font-weight: 700; padding-right: 15px;">
+            <svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.303 3.438 9.8 8.207 11.385.6.113.793-.261.793-.582 0-.287-.013-1.31-.02-2.57-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.755-1.333-1.755-1.09-.744.083-.729.083-.729 1.205.085 1.838 1.236 1.838 1.236 1.07 1.838 2.807 1.307 3.49 1 .107-.775.417-1.305.758-1.605-2.652-.301-5.445-1.327-5.445-5.895 0-1.304.464-2.368 1.235-3.207-.124-.3-.536-1.518.117-3.16 0 0 1.005-.321 3.3 1.23A11.473 11.473 0 0112 6.504c1.044.004 2.088.14 3.062.415 2.292-1.55 3.295-1.23 3.295-1.23.657 1.642.243 2.86.12 3.16.77.84 1.232 1.903 1.232 3.207 0 4.578-2.798 5.59-5.457 5.884.429.366.81 1.096.81 2.212 0 1.598-.014 2.882-.014 3.276 0 .32.19.695.8.576C20.563 21.797 24 17.302 24 12c0-6.63-5.37-12-12-12"/>
+            </svg>
+            GitHub
+          </a>
+        </li>
+        <li id="nav_item">
+          <a href="https://kick.com/sneakydev" target="_blank" style="font-weight: 700; padding-right: 15px;">
+              <img class="w-4 h-4 inline-block mr-1" src="img/kick.png" alt="Kick">
+              Kick
+          </a>
+        </li>
+        <li id="nav_item">
+          <a href="https://twitter.com/sneakyv2_" target="_blank" style="font-weight: 700; padding-right: 15px;">
+            <svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+            </svg>
+            Twitter 
+            
+            /
+
+            <svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 24 24"><g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g></svg>
+          </a>
+        </li>
+      </ul>
+      <!--<button onclick="resetWelcomeCookie()">Reset Welcome Cookie</button>-->
+    </nav>
   </header>
 
   <div class="container mx-auto px-4 py-8">
-    <div class="flex space-x-4">
-      <div class="w-1/4">
-        <h2 class="text-xl font-semibold">TnyavnTo / Svxy / Sneaky</h2>
-        <div id="profileInfo" class="bg-gray-800 p-4 rounded-lg mt-4">
+    <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+      <div class="w-full md:w-1/4 flex flex-col items-center">
+        <h2 class="text-xl font-semibold mb-4">TnyavnTo / Svxy / Sneaky</h2>
+        <div id="profileInfo" class="bg-gray-800 p-4 rounded-lg">
         </div>
       </div>
-      <div class="w-3/4">
+      <div class="w-full md:w-3/4">
         <h1 class="text-4xl font-semibold mb-4">My Projects</h1>
         <p class="mb-2">Arranged by most stars on GitHub:</p>
-        <div id="repos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+        <div id="repos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
       </div>
     </div>
   </div>
