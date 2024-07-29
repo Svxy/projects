@@ -1,6 +1,6 @@
 <h2 align=center>Projects</h2>
 
-<p align=center><b>A new simple addition to my website that lists all of my public git repos, ordered by most repo stars, powered by GitHub's api.</b></p>
+<p align=center><b>A new simple addition to my website that lists all of my public git repos, ordered by recently updated or most repo stars, powered by GitHub's api.</b></p>
 
 <br>
 

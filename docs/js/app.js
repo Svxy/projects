@@ -1,34 +1,13 @@
 const reposContainer = document.getElementById("repos");
 const profileInfoContainer = document.getElementById("profileInfo");
+const sortOptions = document.getElementById("sortOptions");
 
-function checkFirstVisit() {
-  const firstVisit = getCookie("firstVisit");
-  if (!firstVisit) {
-    showWelcomeMessage();
-    setCookie("firstVisit", "true", 365);
-  }
-}
-
-function showWelcomeMessage() {
-  const welcomeMessage = document.createElement("div");
-  welcomeMessage.classList.add("welcome-message");
-  welcomeMessage.innerHTML = `
-    <div>Welcome to my projects page!</div>
-    <div class="subtitle">This is a page aimed at showcasing my git repos on my own domain, rather than directing users to github.</div>
-  `;
-  document.body.appendChild(welcomeMessage);
-
-  const hideWelcomeMessage = () => {
-    welcomeMessage.style.display = "none";
-    welcomeMessage.removeEventListener("animationend", hideWelcomeMessage);
-  };
-
-  welcomeMessage.addEventListener("animationend", hideWelcomeMessage);
-}
+const githubLogoUrl = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png";
 
 async function fetchProfileInfo() {
   try {
     const response = await fetch("https://api.github.com/users/svxy");
+    if (!response.ok) throw new Error("Network response was not ok");
     const profileInfo = await response.json();
     displayProfileInfo(profileInfo);
   } catch (error) {
@@ -50,7 +29,6 @@ function displayProfileInfo(profileInfo) {
   const profileName = document.createElement("h3");
   profileName.innerText = profileInfo.name || "Svxy";
   profileName.style.textDecoration = "underline";
-
 
   const profileBio = document.createElement("p");
   profileBio.innerText = profileInfo.bio || "No bio.";
@@ -80,6 +58,7 @@ async function fetchAllRepos() {
   try {
     while (true) {
       const response = await fetch(`https://api.github.com/users/svxy/repos?page=${page}&per_page=100`);
+      if (!response.ok) throw new Error("Network response was not ok");
       const repos = await response.json();
 
       if (repos.length === 0) {
@@ -90,11 +69,35 @@ async function fetchAllRepos() {
       page++;
     }
 
-    allRepos.sort((a, b) => b.stargazers_count - a.stargazers_count);
-    displayRepos(allRepos);
+    console.log("All repositories fetched:", allRepos);
+
+    sortRepos(allRepos);
+    sortOptions.addEventListener("change", () => sortRepos(allRepos));
   } catch (error) {
     console.error("Error fetching repositories:", error);
   }
+}
+
+function sortRepos(repos) {
+  const sortBy = sortOptions.value;
+  console.log("Sorting by:", sortBy);
+
+  if (sortBy === "updated") {
+    repos.sort((a, b) => {
+      const dateComparison = new Date(b.updated_at) - new Date(a.updated_at);
+      if (dateComparison !== 0) return dateComparison;
+      return a.name.localeCompare(b.name);
+    });
+  } else if (sortBy === "stars") {
+    repos.sort((a, b) => {
+      const starsComparison = b.stargazers_count - a.stargazers_count;
+      if (starsComparison !== 0) return starsComparison;
+      return a.name.localeCompare(b.name);
+    });
+  }
+
+  console.log("Sorted repositories:", repos);
+  displayRepos(repos);
 }
 
 function displayRepos(repos) {
@@ -102,8 +105,8 @@ function displayRepos(repos) {
     .map(
       (repo) => `
       <a href="${repo.html_url}" target="_blank" class="block bg-gray-800 rounded-lg shadow-lg overflow-hidden project-card">
-      <img src="${repo.preview_image || repo.owner.avatar_url}" alt="${repo.name}" class="w-full h-32 object-cover">
-      <div class="p-4">
+        <img src="${repo.preview_image || githubLogoUrl}" alt="${repo.name}" class="w-full h-64 object-cover">
+        <div class="p-4">
           <h3 class="text-xl font-semibold mb-2" style="text-decoration: underline;">${repo.name}</h3>
           <p>${repo.description || "No project description."}</p>
         </div>
@@ -113,30 +116,5 @@ function displayRepos(repos) {
     .join("");
 }
 
-function setCookie(name, value, days) {
-  const date = new Date();
-  date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-  const expires = "expires=" + date.toUTCString();
-  document.cookie = name + "=" + value + ";" + expires + ";path=/";
-}
-
-function getCookie(name) {
-  const decodedCookie = decodeURIComponent(document.cookie);
-  const cookies = decodedCookie.split(";");
-  for (let i = 0; i < cookies.length; i++) {
-    const cookie = cookies[i].trim();
-    if (cookie.indexOf(name + "=") === 0) {
-      return cookie.substring(name.length + 1);
-    }
-  }
-  return null;
-}
-
-function resetWelcomeCookie() {
-  setCookie("firstVisit", "", -1);
-  console.log("success");
-}
-
-checkFirstVisit();
 fetchAllRepos();
 fetchProfileInfo();
