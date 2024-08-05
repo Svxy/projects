@@ -84,7 +84,7 @@ function sortRepos(repos) {
 
   if (sortBy === "updated") {
     repos.sort((a, b) => {
-      const dateComparison = new Date(b.updated_at) - new Date(a.updated_at);
+      const dateComparison = new Date(b.pushed_at) - new Date(a.pushed_at);
       if (dateComparison !== 0) return dateComparison;
       return a.name.localeCompare(b.name);
     });
@@ -101,19 +101,29 @@ function sortRepos(repos) {
 }
 
 function displayRepos(repos) {
-  reposContainer.innerHTML = repos
-    .map(
-      (repo) => `
-      <a href="${repo.html_url}" target="_blank" class="block bg-gray-800 rounded-lg shadow-lg overflow-hidden project-card">
-        <img src="${repo.preview_image || githubLogoUrl}" alt="${repo.name}" class="w-full h-64 object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold mb-2" style="text-decoration: underline;">${repo.name}</h3>
-          <p>${repo.description || "No project description."}</p>
-        </div>
-      </a>
-    `
-    )
-    .join("");
+  reposContainer.classList.add("fade-out");
+  setTimeout(() => {
+    reposContainer.innerHTML = "";
+    reposContainer.innerHTML = repos
+      .map(
+        (repo) => `
+        <a href="${repo.html_url}" target="_blank" class="block bg-gray-800 rounded-lg shadow-lg overflow-hidden project-card">
+          <img src="${repo.preview_image || githubLogoUrl}" alt="${repo.name}" class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-2" style="text-decoration: underline;">${repo.name}</h3>
+            <p>${repo.description || "No project description."}</p>
+          </div>
+        </a>
+      `
+      )
+      .join("");
+
+    reposContainer.classList.remove("fade-out");
+    reposContainer.classList.add("fade-in");
+    setTimeout(() => {
+      reposContainer.classList.remove("fade-in");
+    }, 500);
+  }, 500);
 }
 
 fetchAllRepos();
